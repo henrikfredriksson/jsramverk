@@ -25,7 +25,6 @@ export default function Home() {
        <div className='report'>
          <Markdown children={text} />
        </div>
-
       <div className="me-img">
         <img id='me' src={Me} alt='' />
       </div>

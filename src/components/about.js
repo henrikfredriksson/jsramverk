@@ -25,7 +25,7 @@ export default function About(props) {
       <div className='report'>
         <Markdown children={text} />
         <div className='app-logo'>
-          <img data-src={logo} className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="logo" />
         </div>
 
       </div>
