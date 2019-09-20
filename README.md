@@ -1,4 +1,4 @@
-# jsramverk
+# jsramverk [![Build Status](https://travis-ci.org/henrikfredriksson/jsramverk.svg?branch=master)](https://travis-ci.org/henrikfredriksson/jsramverk) [![CircleCI](https://circleci.com/gh/henrikfredriksson/jsramverk.svg?style=svg)](https://circleci.com/gh/henrikfredriksson/jsramverk) [![Build Status](https://scrutinizer-ci.com/g/henrikfredriksson/jsramverk/badges/build.png?b=master)](https://scrutinizer-ci.com/g/henrikfredriksson/jsramverk/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/henrikfredriksson/jsramverk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/henrikfredriksson/jsramverk/?branch=master)
 
 
 ## Available Scripts
