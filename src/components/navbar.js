@@ -41,6 +41,8 @@ export default function Navbar() {
 
       <Route path='/reports' exact render={() => <Redirect to='/' />} />
       <Route path='/reports/week' exact render={() => <Redirect to='/' />} />
+      <Route exact component={() => (<h1>404 Not Found</h1>)} />
+
 
       <div className='navbar'>
         <h3>jsramverk</h3>
