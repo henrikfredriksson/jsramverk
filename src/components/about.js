@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Markdown from 'markdown-to-jsx'
 import logo from '../logo.svg'
 
@@ -15,8 +15,9 @@ export default function About(props) {
         .then(text => setText(text))
         .catch(err => console.error(err))
     } catch (e) {
-      setText('not found')
       console.error(e)
+
+      setText(`# File not found`)
     }
   }, [props.match.params.id])
 

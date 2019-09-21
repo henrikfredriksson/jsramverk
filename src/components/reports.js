@@ -13,7 +13,7 @@ export default function Reports(props) {
         .then(text => setText(text))
         .catch(err => console.error(err))
     } catch (e) {
-      setText('not found')
+      setText('# File not found')
     }
   }, [props.match.params.id])
 
