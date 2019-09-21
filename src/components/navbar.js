@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {
   BrowserRouter as Router,
-  Route, Link, Redirect
+  Route, Link, Redirect, Switch
 } from 'react-router-dom'
 
 import Home from './home'
@@ -35,19 +35,20 @@ export default function Navbar() {
 
   return (
     <Router>
-      {pages.map((page, index) => (
-        <Route exact key={index} path={page.route} component={page.content} />
-      ))}
+      <Switch>
+        {pages.map((page, index) => (
+          <Route exact key={index} path={page.route} component={page.content} />
+        ))}
 
-      <Route path='/reports' exact render={() => <Redirect to='/' />} />
-      <Route path='/reports/week' exact render={() => <Redirect to='/' />} />
-      <Route exact component={() => (
-        <>
-          <h1>404 Not Found</h1>
-          <p>The requested url {window.location.href} can not be found</p>
-        </>
-      )} />
-
+        <Route path='/reports' exact render={() => <Redirect to='/' />} />
+        <Route path='/reports/week' exact render={() => <Redirect to='/' />} />
+        <Route component={() => (
+          <>
+            <h1>404 Not Found</h1>
+            <p>The requested url {window.location.href} can not be found</p>
+          </>
+        )} />
+      </Switch>
 
       <div className='navbar'>
         <h3>jsramverk</h3>
