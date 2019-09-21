@@ -52,7 +52,9 @@ export default function Navbar() {
             <Link to='/about'>Om</Link>
           </li>
           <li>
-            <Link onClick={handleOnClick} to='#'>Redovisning {reportOpen ? '-' : '+'}</Link>
+            <Link onClick={handleOnClick} to='#'>
+              Redovisning {reportOpen ? '-' : '+'}
+            </Link>
             {reportOpen && (
               <>
                 <Link to='/reports/week/1'>Vecka 1</Link>
