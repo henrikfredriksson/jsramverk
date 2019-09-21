@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route, Link, Redirect
+} from 'react-router-dom'
 
 import Home from './home'
 import About from './about'
@@ -36,6 +39,9 @@ export default function Navbar() {
         <Route exact key={index} path={page.route} component={page.content} />
       ))}
 
+      <Route path='/reports' exact render={() => <Redirect to='/' />} />
+      <Route path='/reports/week' exact render={() => <Redirect to='/' />} />
+
       <div className='navbar'>
         <h3>jsramverk</h3>
         <ul>
@@ -51,6 +57,10 @@ export default function Navbar() {
               <>
                 <Link to='/reports/week/1'>Vecka 1</Link>
                 <Link to='/reports/week/2'>Vecka 2</Link>
+                <Link to='/reports/week/3'>Vecka 3</Link>
+                <Link to='/reports/week/4'>Vecka 4</Link>
+                <Link to='/reports/week/5'>Vecka 5</Link>
+                <Link to='/reports/week/6'>Vecka 6</Link>
               </>
             )}
 
