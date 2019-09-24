@@ -35,6 +35,7 @@
         "allowSingleLine": true
       }
     ],
+    "quotes": ["error", "single"],
     "no-with": 2,
     "keyword-spacing": [2, {}],
     "space-before-blocks": [2, "always"],
