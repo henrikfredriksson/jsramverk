@@ -9,6 +9,7 @@ import About from './about'
 import Reports from './reports'
 
 import './navbar.css'
+import Forms from './forms'
 
 const pages = [
   {
@@ -22,6 +23,10 @@ const pages = [
   {
     content: Reports,
     route: '/reports/week/:id'
+  },
+  {
+    content: Forms,
+    route: '/forms'
   }
 ]
 
@@ -47,7 +52,7 @@ export default function Navbar() {
             <h1>404 Not Found</h1>
             <p>The requested url {window.location.href} can not be found</p>
           </>
-        )} />
+        )} />¨
       </Switch>
 
       <div className='navbar'>
@@ -58,6 +63,9 @@ export default function Navbar() {
           </li>
           <li>
             <Link to='/about'>Om</Link>
+          </li>
+          <li>
+            <Link to='/forms'>Form</Link>
           </li>
           <li>
             <Link onClick={handleOnClick} to='#'>
