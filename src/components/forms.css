@@ -1,5 +1,4 @@
 pre {
-  outline: 1px solid #ccc;
   padding: 5px;
   margin: 5px;
 }
@@ -19,7 +18,114 @@ pre {
   color: red;
 }
 
-.active {
+.validField {
   border: 2px solid green;
-  background-color: red;
+  color: black;
+}
+
+.invalidField {
+  border: 2px solid red;
+  background-color: #fcc;
+  color: black;
+}
+
+.subtitle {
+  text-align: left;
+}
+
+.input-icons i {
+  position: absolute;
+  align-items: right;
+}
+
+.right-addon {
+  right: 0px;
+}
+
+.input-icons {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.icon {
+  padding: 10px;
+  min-width: 40px;
+}
+
+.input-field {
+  padding-left: 40px;
+  text-align: left;
+  font-size: 20px;
+  height: 30px;
+  width: 20vw;
+}
+
+.input-field:focus {
+  /* border: 1px solid black; */
+  background-color: lightcyan;
+  color: black;
+}
+
+.form-input {
+  max-width: 600px;
+}
+
+#register-button {
+  margin-left: 40px;
+  border: 1px solid black;
+  background-color: #61dafb;
+  width: 20vw;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 4px;
+}
+
+#password-strength-meter {
+  margin-left: 40px;
+  height: 10px;
+  max-width: 20vw;
+  position: 'relative';
+}
+
+#password-strength {
+  padding-left: 40px;
+  margin-top: 2px;
+  margin-left: 1px;
+  height: 8px;
+}
+
+.password-requirements {
+  padding-left: 40px;
+  width: 20vw;
+  /* max-height: 0; */
+  opacity: 0;
+  transition: 0.28s;
+  overflow: hidden;
+  /* color: #999; */
+  font-style: italic;
+}
+
+.name-email-requirements {
+  width: 400px;
+  /* color: #999; */
+  transition: 0.28s;
+  overflow: hidden;
+  font-style: italic;
+}
+
+.preview {
+  transform: scale(0.8);
+}
+
+ul {
+  list-style-type: none;
+}
+
+input[type='checkbox'] {
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  transform: scale(1.5);
 }

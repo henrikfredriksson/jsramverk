@@ -8,7 +8,7 @@ export default function About(props) {
 
   useEffect(() => {
     try {
-      const readmePath = require(`../texts/about.md`)
+      const readmePath = require('../texts/about.md')
 
       fetch(readmePath)
         .then(response => response.text())
@@ -17,7 +17,7 @@ export default function About(props) {
     } catch (e) {
       console.error(e)
 
-      setText(`# File not found`)
+      setText('# File not found')
     }
   }, [props.match.params.id])
 
