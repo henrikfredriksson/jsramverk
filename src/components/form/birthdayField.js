@@ -91,7 +91,9 @@ export default function BirthdayField({ data, setData }) {
           <i className="fa fa-birthday-cake icon" />
           <input
             className={birthdayChanged ?
-              validYear && validMonth && validDay ? 'input-field validField'
+              validYear(data.birthday) &&
+                validMonth(data.birthday) &&
+                validDay(data.birthday) ? 'input-field validField'
                 : 'input-field invalidField'
               : 'input-field '}
             type="text"
