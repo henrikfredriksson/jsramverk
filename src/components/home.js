@@ -10,7 +10,7 @@ export default function Home() {
   const [me, setMe] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  const endpoint = 'http://me-api.henrikfredriksson.me'
+  const endpoint = 'https://me-api.henrikfredriksson.me'
 
 
   useEffect(() => {
