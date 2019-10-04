@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Navbar from './navbar'
 import Markdown from 'markdown-to-jsx'
 
 export default function Reports(props) {
@@ -19,8 +20,9 @@ export default function Reports(props) {
 
   return (
     <>
-      <div className='report'>
-        <Markdown children={text} />
+      <Navbar />
+      <div className='container'>
+        <Markdown>{text}</Markdown>
       </div>
     </>)
 }

@@ -1,33 +1,66 @@
 import React, { useState, useEffect } from 'react'
 import Markdown from 'markdown-to-jsx'
+import Loader from 'react-loader-spinner'
+import Navbar from './navbar'
 
 import Me from '../me.jpg'
 
 export default function Home() {
-  const [text, setText] = useState('')
+  // const [text, setText] = useState('')
+  const [me, setMe] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
+  const endpoint = 'http://me-api.henrikfredriksson.me'
+
 
   useEffect(() => {
-    try {
-      const file = require('../texts/home.md')
+    const fetchData = async () => {
+      setIsLoading(true)
+      const response = await fetch(endpoint)
+      const data = await response.json()
 
-      fetch(file)
-        .then(response => response.text())
-        .then(text => setText(text))
-        .catch(err => console.error(err))
-    } catch (e) {
-      setText('File  not found')
+      await setMe(data.description)
+      setIsLoading(false)
     }
-  }, [])
+
+    fetchData()
+  }, [me, endpoint])
 
 
-  return (
-    <>
-      <div className='report'>
-        <Markdown children={text} />
-      </div>
+  const content = (
+
+    <div className="content">
+      <Markdown options={{ forceInline: true }}>{me}</Markdown>
       <div className="me-img">
         <img id='me' src={Me} alt='' />
       </div>
+    </div>
+
+  )
+
+  return (
+    <>
+      <Navbar />
+      <div className='container'>
+        {isLoading ?
+          <>
+            <Loader
+              type="Puff"
+              color="#00BFFF"
+              height={20}
+              width={20}
+            /> Loading content...
+          </>
+          : content}
+      </div>
+
+      {/* {
+        isLoading ?
+
+          </div>
+          :
+          content
+      } */}
     </>
   )
 }

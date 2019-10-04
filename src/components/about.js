@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Navbar from './navbar'
 import Markdown from 'markdown-to-jsx'
 import logo from '../logo.svg'
 
@@ -23,10 +24,13 @@ export default function About(props) {
 
   return (
     <>
-      <div className='report'>
-        <Markdown children={text} />
-        <div className='app-logo'>
-          <img src={logo} className="App-logo" alt="logo" />
+      <Navbar />
+      <div className='container'>¨
+        <div className='content'>
+          <Markdown>{text}</Markdown>
+          <div className='app-logo'>
+            <img src={logo} className="App-logo" alt="logo" />
+          </div>
         </div>
 
       </div>

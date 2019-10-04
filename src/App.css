@@ -6,7 +6,6 @@
   width: 800px;
   font-family: 'Crimson Text', serif;
   position: relative;
-
 }
 
 .App-logo {
@@ -24,7 +23,10 @@
   }
 }
 
-h1,h2,h3,h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: 'Work Sans', serif;
   text-align: center;
 }
@@ -46,8 +48,16 @@ h1,h2,h3,h4 {
   text-align: center;
 }
 
-
-a, a:visited {
-  color: #61DAFB;
+a,
+a:visited {
+  color: #61dafb;
 }
 
+.container {
+  margin-left: 15vw; /* Same as the width of the sidenav */
+  padding: 0px 30px;
+}
+
+.content {
+  width: 600px;
+}

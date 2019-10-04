@@ -6,7 +6,7 @@ import React, { useState } from 'react'
  * @param {*} { data, setData, handleOnFocus, handleOnBlur }
  * @returns
  */
-export default function NameField({ data, setData, handleOnFocus, handleOnBlur }) {
+export default function NameField({ data, setData, handleOnBlur }) {
   const [nameChanged, setNameChanged] = useState(false)
 
   const handleOnChangeName = e => {
@@ -32,10 +32,6 @@ export default function NameField({ data, setData, handleOnFocus, handleOnBlur }
             onBlur={handleOnBlur}
             required
           />
-          {/* {nameChanged ?
-          data.name ? <i className="fa fa-check fa-2x" style={{ color: 'green' }}></i>
-            : <i className="fa fa-times fa-2x" style={{ color: 'red' }}></i>
-          : ''} */}
           {nameChanged ?
             data.name ? <p>&nbsp;</p>
               : <p className="name-email-requirements">Vänligen fyll i namn</p>

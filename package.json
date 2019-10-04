@@ -6,16 +6,19 @@
     "markdown-to-jsx": "^6.10.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-loader-spinner": "^3.1.4",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1"
   },
+  "proxy": "http://localhost:5000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "benchmark": "react-benchmark benchmark.js"
   },
   "eslintConfig": {
     "extends": "react-app"

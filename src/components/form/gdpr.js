@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const GDPRBox = ({ data, setData }) => {
   const [checked, setChecked] = useState(false)
 
-  const handleOnChange = e => {
+  const handleOnChange = () => {
     setChecked(!checked)
     setData({ ...data, gdpr: !checked })
   }

@@ -1,90 +1,80 @@
 import React, { useState } from 'react'
+import { createBrowserHistory as createHistory } from 'history'
+
+
 import {
-  BrowserRouter as Router,
-  Route, Link, Redirect, Switch
+  Link
 } from 'react-router-dom'
 
-import Home from './home'
-import About from './about'
-import Reports from './reports'
-
 import './navbar.css'
-import Forms from './forms'
 
-const pages = [
-  {
-    content: Home,
-    route: '/'
-  },
-  {
-    content: About,
-    route: '/about'
-  },
-  {
-    content: Reports,
-    route: '/reports/week/:id'
-  },
-  {
-    content: Forms,
-    route: '/forms'
-  }
-]
 
 export default function Navbar() {
   const [reportOpen, setReportOpen] = useState(false)
+
 
   const handleOnClick = () => {
     setReportOpen(!reportOpen)
   }
 
+  const history = createHistory()
+  const route = history.location.pathname
+
+
+  const pages = [
+    {
+      route: '/',
+      description: 'Hem'
+    },
+    {
+      route: '/about',
+      description: 'Om'
+    },
+    {
+      route: '/forms',
+      description: 'Formulär'
+    },
+  ]
 
   return (
-    <Router>
-      <Switch>
-        {pages.map((page, index) => (
-          <Route exact key={index} path={page.route} component={page.content} />
-        ))}
 
-        <Route path='/reports' exact render={() => <Redirect to='/' />} />
-        <Route path='/reports/week' exact render={() => <Redirect to='/' />} />
-        <Route component={() => (
-          <>
-            <h1>404 Not Found</h1>
-            <p>The requested url {window.location.href} can not be found</p>
-          </>
-        )} />¨
-      </Switch>
-
-      <div className='navbar'>
-        <h3>jsramverk</h3>
+    <div className='navbar'>
+      <h3>jsramverk</h3>
+      <nav>
         <ul>
-          <li>
-            <Link to='/'>Hem</Link>
-          </li>
-          <li>
-            <Link to='/about'>Om</Link>
-          </li>
-          <li>
-            <Link to='/forms'>Form</Link>
-          </li>
+          {pages.map((page, index) =>
+            (
+              <li key={index}>
+                <Link
+                  to={page.route}
+                  className={page.route === route ? 'currentRoute' : ''}>
+                  {page.description}
+                </Link>
+              </li>
+            ))
+          }
+
           <li>
             <Link onClick={handleOnClick} to='#'>
               Redovisning {reportOpen ? '-' : '+'}
             </Link>
             {reportOpen && (
               <>
-                <Link to='/reports/week/1'>Vecka 1</Link>
-                <Link to='/reports/week/2'>Vecka 2</Link>
-                <Link to='/reports/week/3'>Vecka 3</Link>
-                <Link to='/reports/week/4'>Vecka 4</Link>
-                <Link to='/reports/week/5'>Vecka 5</Link>
-                <Link to='/reports/week/6'>Vecka 6</Link>
+                {[...Array(6).keys()].map(key =>
+                  (
+                    <Link key={key} to={`/reports/week/${key + 1}`}
+                      className={`/reports/week/${key}` === route ? 'currentRoute' : ''}>
+                      Vecka {key + 1}
+                    </Link>
+                  )
+                )}
               </>
             )}
 
           </li>
         </ul>
-      </div>
-    </Router>
+      </nav>
+    </div >
+
   )
 }
