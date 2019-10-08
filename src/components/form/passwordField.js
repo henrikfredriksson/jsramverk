@@ -10,7 +10,11 @@ import {
 import PasswordStrength from './passwordStrength'
 
 
-export default function PasswordField({ data, setData }) {
+export default function PasswordField({
+  data,
+  setData,
+  showRequirements = true,
+  showPreview = true }) {
   const [passwordChanged, setpasswordChanged] = useState(false)
   const [showPassword, setShowPassword] = useState(true)
   const [validPassword, setvalidPassword] = useState(false)
@@ -25,13 +29,9 @@ export default function PasswordField({ data, setData }) {
     setShowPassword(!showPassword)
   }
 
-
   const handleOnChangePassword = e => {
     setpasswordChanged(true)
-
     setPassword(e.target.value)
-
-
     setpasswordEmpty(false)
     setvalidPassword(false)
 
@@ -40,7 +40,6 @@ export default function PasswordField({ data, setData }) {
       setData({ ...data, password: '' })
       return
     }
-
 
     if (!validatePassword(e.target.value)) {
       setData({ ...data, password: '' })
@@ -88,7 +87,7 @@ export default function PasswordField({ data, setData }) {
             ref={passwordRef}
             required
           />
-          {passwordChanged ?
+          {showPreview && passwordChanged ?
             passwordEmpty ? '' :
               <a style={{ color: 'black' }} href="#show" onClick={togglePassword}>
                 {showPassword ?
@@ -104,7 +103,7 @@ export default function PasswordField({ data, setData }) {
       <div
         ref={requirements}
         style={{ fontSize: '16px', color: '#333' }}
-        className='password-requirements'>
+        className={showRequirements ? 'password-requirements': 'hide'}>
         <ul style={{ paddingTop: '0' }}>Lösenord måste:
           <li style={password.length >= 4
             ? { color: 'green ' } : { color: 'red' }}>innehålla minst 4 tecken</li>

@@ -69,7 +69,7 @@ const PasswordStrength = ({ password }) => {
     backgroundColor = 'LawnGreen'
   }
 
-  console.log(_passwordStrength)
+
 
   return (
     <>
@@ -79,7 +79,7 @@ const PasswordStrength = ({ password }) => {
           width: `${_passwordStrength}%`,
           backgroundColor: backgroundColor,
           height: '8px',
-          maxWidth: '30vw',
+          maxWidth: '400px',
           position: 'relative'
         }}>
       </div>

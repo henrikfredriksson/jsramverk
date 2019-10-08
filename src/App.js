@@ -12,7 +12,12 @@ import './components/navbar.css'
 import Home from './components/home'
 import About from './components/about'
 import Reports from './components/reports'
-import Forms from './components/forms'
+import Register from './components/register'
+import Login from './components/login'
+
+
+
+console.log(process.env.REACT_APP_DB_ENDPOINT)
 
 const pages = [
   {
@@ -28,17 +33,16 @@ const pages = [
     route: '/reports/week/:id'
   },
   {
-    content: Forms,
-    route: '/forms'
+    content: Register,
+    route: '/register'
+  },
+  {
+    content: Login,
+    route: '/login'
   }
 ]
 
-
-
-
-
 function App() {
-  console.log(process.env.NODE_ENV)
   return (
     <Router>
       <Switch>

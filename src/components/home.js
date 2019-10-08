@@ -10,8 +10,11 @@ export default function Home() {
   const [me, setMe] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  const endpoint = 'https://me-api.henrikfredriksson.me'
+  let endpoint = 'https://me-api.henrikfredriksson.me/'
 
+  if (process.env.NODE_ENV === 'development') {
+    endpoint = 'http://localhost:5000/'
+  }
 
   useEffect(() => {
     const fetchData = async () => {

@@ -103,7 +103,6 @@ export default function BirthdayField({ data, setData }) {
             onBlur={handleOnBlur}
             value={data.birthday}
             maxLength={10}
-            required
           />
         </label>
         <div

@@ -57,7 +57,7 @@ pre {
   text-align: left;
   font-size: 20px;
   height: 30px;
-  width: 20vw;
+  width: 400px;
 }
 
 .input-field:focus {
@@ -83,7 +83,7 @@ pre {
 #password-strength-meter {
   margin-left: 40px;
   height: 10px;
-  max-width: 20vw;
+  max-width: 400px;
   position: 'relative';
 }
 
@@ -96,8 +96,7 @@ pre {
 
 .password-requirements {
   padding-left: 40px;
-  width: 20vw;
-  /* max-height: 0; */
+  width: 400px;
   opacity: 0;
   transition: 0.28s;
   overflow: hidden;
@@ -128,4 +127,8 @@ input[type='checkbox'] {
   -webkit-transform: scale(1.5); /* Safari and Chrome */
   -o-transform: scale(1.5); /* Opera */
   transform: scale(1.5);
+}
+
+.hide {
+  display: none;
 }

@@ -31,8 +31,12 @@ export default function Navbar() {
       description: 'Om'
     },
     {
-      route: '/forms',
-      description: 'Formulär'
+      route: '/register',
+      description: 'Registrera'
+    },
+    {
+      route: '/login',
+      description: 'Logga in'
     },
   ]
 
