@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react'
 import Markdown from 'markdown-to-jsx'
 import Loader from 'react-loader-spinner'
 import Navbar from './navbar'
+// import auth from '../models/auth'
 
 import Me from '../me.jpg'
+
 
 export default function Home() {
   // const [text, setText] = useState('')
@@ -19,10 +21,12 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true)
+
       const response = await fetch(endpoint)
       const data = await response.json()
 
-      await setMe(data.description)
+
+      await setMe(data.bodytext)
       setIsLoading(false)
     }
 
@@ -30,8 +34,8 @@ export default function Home() {
   }, [me, endpoint])
 
 
-  const content = (
 
+  const content = (
     <div className="content">
       <Markdown options={{ forceInline: true }}>{me}</Markdown>
       <div className="me-img">
@@ -40,6 +44,8 @@ export default function Home() {
     </div>
 
   )
+
+
 
   return (
     <>
@@ -56,14 +62,6 @@ export default function Home() {
           </>
           : content}
       </div>
-
-      {/* {
-        isLoading ?
-
-          </div>
-          :
-          content
-      } */}
     </>
   )
 }

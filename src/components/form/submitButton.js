@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-let endpoint = 'https://me-api.henrikfredriksson.me'
+let endpoint = 'https://me-api.henrikfredriksson.me/register'
 
 if (process.env.NODE_ENV === 'development') {
   endpoint = 'http://localhost:5000/register'

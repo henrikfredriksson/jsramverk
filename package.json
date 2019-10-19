@@ -11,7 +11,6 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1"
   },
-  "proxy": "http://localhost:5000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -19,7 +18,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "benchmark": "react-benchmark benchmark.js"
+    "deploy": "npm run build && rsync -av build/* deploy@68.183.66.184:/var/www/henrikfredriksson.me/html/"
   },
   "eslintConfig": {
     "extends": "react-app"

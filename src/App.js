@@ -2,7 +2,8 @@ import React from 'react'
 
 import {
   BrowserRouter as Router,
-  Route, Redirect, Switch,
+  Route,
+  Switch,
 } from 'react-router-dom'
 
 
@@ -11,13 +12,15 @@ import './components/navbar.css'
 
 import Home from './components/home'
 import About from './components/about'
-import Reports from './components/reports'
+// import Reports from './components/reports'
+import ReportsTemplate from './components/reports/reportTemplate'
+import Edit from './components/reports/edit'
+import EditReport from './components/reports/editReport'
+import NewReport from './components/reports/newReport'
 import Register from './components/register'
 import Login from './components/login'
 
 
-
-console.log(process.env.REACT_APP_DB_ENDPOINT)
 
 const pages = [
   {
@@ -29,7 +32,7 @@ const pages = [
     route: '/about'
   },
   {
-    content: Reports,
+    content: ReportsTemplate,
     route: '/reports/week/:id'
   },
   {
@@ -39,6 +42,23 @@ const pages = [
   {
     content: Login,
     route: '/login'
+  },
+  // {
+  //   content: Reports,
+  //   route: '/reports'
+  // },
+  {
+    content: Edit,
+    route: '/reports/edit'
+  },
+  {
+    content: EditReport,
+    route: '/reports/edit/:id'
+  },
+
+  {
+    content: NewReport,
+    route: '/reports/new/'
   }
 ]
 
@@ -50,8 +70,6 @@ function App() {
           <Route exact key={index} path={page.route} component={page.content} />
         ))}
 
-        <Route path='/reports' exact render={() => <Redirect to='/' />} />
-        <Route path='/reports/week' exact render={() => <Redirect to='/' />} />
         <Route component={() => (
           <>
             <h1>404 Not Found</h1>

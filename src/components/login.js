@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import Navbar from './navbar'
 import EmailField from './form/emailField'
 import PasswordField from './form/passwordField'
-
-const endpoint = process.env.REACT_APP_DB_ENDPOINT + '/login'
-
+import auth from '../models/auth'
+import { Redirect } from 'react-router-dom'
 
 
 export default function Login() {
@@ -13,10 +12,12 @@ export default function Login() {
     password: ''
   })
 
-  console.log(data)
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   return (
     <div className="container">
+      {loggedIn && <Redirect to='/reports/edit' />}
       <div className="content">
         <Navbar />
         <h1>Logga in</h1>
@@ -26,7 +27,8 @@ export default function Login() {
             <EmailField data={data} setData={setData} />
             <PasswordField data={data} setData={setData}
               showRequirements={false}
-              showPreview={false} />
+              showPreview={false}
+              showStrength={false} />
             <br />
             <input
               type="button"
@@ -34,29 +36,22 @@ export default function Login() {
               onClick={async (e) => {
                 e.preventDefault()
                 try {
-                  const response = await fetch(endpoint,
-                    {
-                      headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json'
-                      },
-                      method: 'POST',
-                      body: JSON.stringify({
-                        user: data.email,
-                        password: data.password
-                      })
-                    })
-                    .catch(function (res) { console.log(res) })
+                  const loginResponse = await auth.login(data.email, data.password)
 
-                  const d = await response.json()
-
-                  console.log(d)
+                  if (loginResponse.status === 200) {
+                    setLoggedIn(true)
+                  } else if (loginResponse.status === 401) {
+                    setErrorMessage('Felaktigt lösenord')
+                  } else {
+                    setErrorMessage('Kunde ej hitta användare')
+                  }
                 } catch (e) {
                   console.error(e)
                 }
               }}
               value="Logga in"
             />
+            {errorMessage && <p>{errorMessage}</p>}
           </form>
         </div>
       </div>

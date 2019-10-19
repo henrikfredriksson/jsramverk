@@ -1,10 +1,6 @@
 import React, { useState } from 'react'
 import { createBrowserHistory as createHistory } from 'history'
-
-
-import {
-  Link
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import './navbar.css'
 
@@ -40,6 +36,7 @@ export default function Navbar() {
     },
   ]
 
+
   return (
 
     <div className='navbar'>
@@ -60,18 +57,25 @@ export default function Navbar() {
 
           <li>
             <Link onClick={handleOnClick} to='#'>
-              Redovisning {reportOpen ? '-' : '+'}
-            </Link>
+              Redovisning {reportOpen ? '-' : '+'}</Link>
+
             {reportOpen && (
               <>
+
                 {[...Array(6).keys()].map(key =>
                   (
                     <Link key={key} to={`/reports/week/${key + 1}`}
-                      className={`/reports/week/${key}` === route ? 'currentRoute' : ''}>
+                      className={`/reports/week/${key + 1}` === route ? 'currentRoute' : ''}>
                       Vecka {key + 1}
                     </Link>
                   )
                 )}
+
+                <Link
+                  to='/reports/edit'
+                  className={'add' === route ? 'currentRoute' : ''}>
+                  Redigera/Lägg till
+                </Link>
               </>
             )}
 

@@ -61,3 +61,10 @@ a:visited {
 .content {
   width: 600px;
 }
+
+.reportArea {
+  resize: none;
+  width: 100%;
+  font-size: 14px;
+  font-family: 'Courier New', Courier, monospace;
+}

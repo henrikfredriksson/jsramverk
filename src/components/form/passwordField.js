@@ -14,7 +14,8 @@ export default function PasswordField({
   data,
   setData,
   showRequirements = true,
-  showPreview = true }) {
+  showPreview = true,
+  showStrength = true }) {
   const [passwordChanged, setpasswordChanged] = useState(false)
   const [showPassword, setShowPassword] = useState(true)
   const [validPassword, setvalidPassword] = useState(false)
@@ -96,14 +97,14 @@ export default function PasswordField({
               </a>
             : ''}
         </label>
-        <div id='password-strength-meter'>
+        {showStrength && <div id='password-strength-meter'>
           <PasswordStrength password={data.password} />
-        </div>
+        </div>}
       </div>
       <div
         ref={requirements}
         style={{ fontSize: '16px', color: '#333' }}
-        className={showRequirements ? 'password-requirements': 'hide'}>
+        className={showRequirements ? 'password-requirements' : 'hide'}>
         <ul style={{ paddingTop: '0' }}>Lösenord måste:
           <li style={password.length >= 4
             ? { color: 'green ' } : { color: 'red' }}>innehålla minst 4 tecken</li>

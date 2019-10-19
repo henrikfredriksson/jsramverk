@@ -50,19 +50,23 @@ export default function Register() {
 
               <SubmitButton data={data} setRegisterStatus={setRegisterStatus} />
               <br />
-              {registerStatus !== 0 && registerStatus === 500 && <p style={{ color: 'red', paddingLeft: '40px' }}>Användare finns redan registrerad</p>}
+              {registerStatus !== 0 && registerStatus === 500 &&
+                <p style={{ color: 'red', paddingLeft: '40px' }}>
+                  Användare finns redan registrerad
+                </p>
+              }
 
             </form>
 
           </div>
 
-          <div>
+          {/* <div>
             <hr />
             <h4>Debug</h4>
             <pre>
               {JSON.stringify(data, undefined, 2)}
             </pre>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

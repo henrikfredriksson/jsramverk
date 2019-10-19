@@ -1,38 +1,58 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from './navbar'
 import Markdown from 'markdown-to-jsx'
+import Loader from 'react-loader-spinner'
 import logo from '../logo.svg'
 
 
-export default function About(props) {
+export default function About() {
   const [text, setText] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
+  let endpoint = 'https://me-api.henrikfredriksson.me'
+
+  if (process.env.NODE_ENV === 'development') {
+    endpoint = 'http://localhost:5000'
+  }
 
   useEffect(() => {
-    try {
-      const readmePath = require('../texts/about.md')
+    const fetchData = async () => {
+      setIsLoading(true)
+      console.log('loading')
+      const response = await fetch(endpoint.concat('/about'))
+      const data = await response.json()
 
-      fetch(readmePath)
-        .then(response => response.text())
-        .then(text => setText(text))
-        .catch(err => console.error(err))
-    } catch (e) {
-      console.error(e)
 
-      setText('# File not found')
+      await setText(data.bodytext)
+      setIsLoading(false)
     }
-  }, [props.match.params.id])
+
+    fetchData()
+  }, [text, endpoint])
+
+  const content = (
+    <div className='content'>
+      <Markdown options={{ forceInline: true }}>{text}</Markdown>
+      <div className='app-logo'>
+        <img src={logo} className="App-logo" alt="logo" />
+      </div>
+    </div>
+  )
 
   return (
     <>
       <Navbar />
-      <div className='container'>¨
-        <div className='content'>
-          <Markdown>{text}</Markdown>
-          <div className='app-logo'>
-            <img src={logo} className="App-logo" alt="logo" />
-          </div>
-        </div>
-
+      <div className='container'>
+        {isLoading ?
+          <>
+            <Loader
+              type="Puff"
+              color="#00BFFF"
+              height={20}
+              width={20}
+            /> Loading content...
+          </>
+          : content}
       </div>
     </>)
 }

@@ -24,6 +24,7 @@ ul {
   text-align: right;
   position: fixed;
   font-size: 28px; /* Increased text to enable scrolling */
+  box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .active {
